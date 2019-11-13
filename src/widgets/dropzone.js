@@ -4,6 +4,7 @@ import Lang from '../utils/lang.js';
 import Array from '../utils/array.js';
 import Dom from '../utils/dom.js';
 import Widget from '../ui/widget.js';
+import ModelInput from './modelInput.js';
 
 export default Lang.Templatable("Widget.Dropzone", class Dropzone extends Widget { 
 
@@ -13,6 +14,7 @@ export default Lang.Templatable("Widget.Dropzone", class Dropzone extends Widget
 		this.files = null;
 		
 		this.Node("input").addEventListener("change", this.OnInput_Change.bind(this));
+		//console.log(this);
 	}
 	
 	Template() {
@@ -24,12 +26,13 @@ export default Lang.Templatable("Widget.Dropzone", class Dropzone extends Widget
 					  "<i handle='icon' class='fas fa-exclamation-triangle'></i>" +
 				  "</div>" +
 				  "<input handle='input' type='file' multiple />" +
-			   "</div>";
+			   "</div>" ;
+			//    "<div handle='modelInput' class='info info-label' widget='Widget.ModelInput'></div>";
 	}
 	
 	OnInput_Change(ev) {
 		if (ev.target.files.length == 0) return;
-				
+
 		this.files = Array.Map(ev.target.files, function(f) { 
 			return { name:f.name, content:null, raw:f };
 		});
