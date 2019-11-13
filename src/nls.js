@@ -22,6 +22,9 @@ var nls = {
 	"Dropzone_Instructions" : {
 		"en":"Drag and drop<br>or<br>Click to browse"
 	},
+	"RISE_Server_Instructions" : {
+		"en":"Choose a pre-loaded model"
+	},
 	"Dropzone_Title" : {
 		"en":"Simulation files"
 	},
