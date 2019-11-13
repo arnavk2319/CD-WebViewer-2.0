@@ -38,19 +38,36 @@ export default Lang.Templatable("Widget.ModelList", class ModelList extends Widg
         var boxedContent = document.getElementById("modelBox");
         boxedContent.style.display = "none";
         this.Node("lifeModel").addEventListener("click", this.onLifeModelClick_handler.bind(this));
-        this.Node("barberModel").addEventListener("click", this.onBarberModelClick_handler.bind(this));
-
+        // this.Node("barberModel").addEventListener("click", this.onBarberModelClick_handler.bind(this));
+        this.Node("fireModel").addEventListener("click", this.onFireModelClick_handler.bind(this));
+        this.Node("cancerModel").addEventListener("click" , this.onCancerModelClick_handler.bind(this));
+        this.Node("battleModel").addEventListener("click",this.onBattleModelClick_handler.bind(this));
     }
 
     onBarberModelClick_handler(ev){
         console.log("hello");
-        var barberModel = "BarberModel";
+        var barberModel = "barber";
         this.getRiseModel(barberModel);
     }
 
     onLifeModelClick_handler(ev) {
-        var lifeModel = "LifeModel";
+        var lifeModel = 'LifeModel';
         this.getRiseModel(lifeModel);
+    }
+
+    onBattleModelClick_handler(ev){
+        var battleModel = 'BattleModel';
+        this.getRiseModel(battleModel);
+    }
+
+    onCancerModelClick_handler(ev){
+        var cancerModel = 'CancerModel';
+        this.getRiseModel(cancerModel);
+    }
+
+    onFireModelClick_handler(ev){
+        var fireModel = 'FireModel';
+        this.getRiseModel(fireModel);
     }
 
     getRiseModel(modelName){
@@ -111,8 +128,10 @@ export default Lang.Templatable("Widget.ModelList", class ModelList extends Widg
                console.log(error);
            });
        };
+
+       var url = `http://vs1.sce.carleton.ca:8080/cdpp/sim/workspaces/test/dcdpp/${modelName}/results.zip`;
    
-        xhr.open("GET","http://vs1.sce.carleton.ca:8080/cdpp/sim/workspaces/test/dcdpp/BarberModel/results.zip",true);
+        xhr.open("GET",url,true);
         xhr.setRequestHeader("Access-Control-Allow-Origin", "http://vs1.sce.carleton.ca:8080");
         xhr.setRequestHeader("Content-type","application/zip");
         xhr.responseType = 'blob';    
@@ -124,11 +143,10 @@ export default Lang.Templatable("Widget.ModelList", class ModelList extends Widg
     Template(){
         return "<ul id='myUL' style='display : none;'>" +
                     "<li handle='lifeModel'>Life Model</li>" +
-                    "<li handle='barberModel'>Barber Model</li>" +
-                    "<li>Fire Model</li>" +
-                    "<li>Swarm Model</li>" +
-                    "<li>Battle Model</li>" +
-                    "<li>Cancer Model</li>" +
+                    // "<li handle='barberModel'>Barber Model</li>" +
+                    "<li handle='fireModel'>Fire Model</li>" +
+                    "<li handle='cancerModel'>Cancer Model</li>" +
+                    "<li handle='battleModel'>Battle Model</li>" +
                 "</ul>" +
                 "<div id='modelBox' class='box d-vertical d-center'>" +
                     "<div handle='message' class='dropzone-message'>" +
