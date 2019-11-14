@@ -145,6 +145,16 @@ img.palette {
 	width : 28px;
 }
 
+img.rise {
+	cursor : pointer;
+	height : 28px;
+    width : 28px;
+    
+    background: white;
+    border-radius: 30px;
+    padding: 2px;
+}
+
 .popup .palette {
     padding: 15px;
 }
@@ -466,7 +476,6 @@ ul li {
     position: relative;
     padding: 12px 8px 12px 40px;
     list-style-type: none;
-    background: #eee;
     font-size: 18px;
     transition: 0.2s;
     
@@ -479,7 +488,7 @@ ul li {
   
   /* Set all odd list items to a different color (zebra-stripes) */
 ul li:nth-child(odd) {
-    background: #f9f9f9;
+
 }
   
   /* Darker background-color on hover */
