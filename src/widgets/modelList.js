@@ -131,10 +131,10 @@ export default Lang.Templatable("Widget.ModelList", class ModelList extends Widg
            });
        };
 
-       var url = `http://vs1.sce.carleton.ca:8080/cdpp/sim/workspaces/test/dcdpp/${modelName}/results.zip`;
+       var url = `https://vs1.sce.carleton.ca:8080/cdpp/sim/workspaces/test/dcdpp/${modelName}/results.zip`;
    
         xhr.open("GET",url,true);
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "http://vs1.sce.carleton.ca:8080");
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "https://vs1.sce.carleton.ca:8080");
         xhr.setRequestHeader("Content-type","application/zip");
         xhr.responseType = 'blob';    
         xhr.send();
