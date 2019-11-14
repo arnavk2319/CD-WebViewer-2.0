@@ -15,9 +15,15 @@ export default Lang.Templatable("Widget.ModelList", class ModelList extends Widg
         this.files = null;
 
         this.popup = new Popup();
+
+        this.Node("lifeModel").addEventListener("click", this.onLifeModelClick_handler.bind(this));
+        // this.Node("barberModel").addEventListener("click", this.onBarberModelClick_handler.bind(this));
+        this.Node("fireModel").addEventListener("click", this.onFireModelClick_handler.bind(this));
+        this.Node("cancerModel").addEventListener("click" , this.onCancerModelClick_handler.bind(this));
+        this.Node("battleModel").addEventListener("click",this.onBattleModelClick_handler.bind(this));
         // this.popup.Widget = this();
 
-        this.Node("modelInput").addEventListener("click", this.onModelInputClick_Handler.bind(this));
+        // this.Node("modelInput").addEventListener("click", this.onModelInputClick_Handler.bind(this));
 
         // this.Node("lifeModel").addEventListener("click", this.onLifeModelClick_handler.bind(this));
 
@@ -33,15 +39,11 @@ export default Lang.Templatable("Widget.ModelList", class ModelList extends Widg
 
     onModelInputClick_Handler(){
         // this.popup.Show();
-        var unorderedList = document.getElementById("myUL"); 
-        unorderedList.style.display = "block";
-        var boxedContent = document.getElementById("modelBox");
-        boxedContent.style.display = "none";
-        this.Node("lifeModel").addEventListener("click", this.onLifeModelClick_handler.bind(this));
-        // this.Node("barberModel").addEventListener("click", this.onBarberModelClick_handler.bind(this));
-        this.Node("fireModel").addEventListener("click", this.onFireModelClick_handler.bind(this));
-        this.Node("cancerModel").addEventListener("click" , this.onCancerModelClick_handler.bind(this));
-        this.Node("battleModel").addEventListener("click",this.onBattleModelClick_handler.bind(this));
+        // var unorderedList = document.getElementById("myUL"); 
+        // unorderedList.style.display = "block";
+        // var boxedContent = document.getElementById("modelBox");
+        // boxedContent.style.display = "none";
+        
     }
 
     onBarberModelClick_handler(ev){
@@ -136,24 +138,24 @@ export default Lang.Templatable("Widget.ModelList", class ModelList extends Widg
         xhr.setRequestHeader("Content-type","application/zip");
         xhr.responseType = 'blob';    
         xhr.send();
-   
+       
     }
 
 
     Template(){
-        return "<ul id='myUL' style='display : none;'>" +
+        return "<ul id='myUL'>" +
                     "<li handle='lifeModel'>Life Model</li>" +
-                    // "<li handle='barberModel'>Barber Model</li>" +
+                    // "<li handle='barberModel'>Barber Model</li>" +S
                     "<li handle='fireModel'>Fire Model</li>" +
                     "<li handle='cancerModel'>Cancer Model</li>" +
                     "<li handle='battleModel'>Battle Model</li>" +
-                "</ul>" +
-                "<div id='modelBox' class='box d-vertical d-center'>" +
-                    "<div handle='message' class='dropzone-message'>" +
-                        "<div handle='modelInput' class='dropzone-instructions'>nls(RISE_Server_Instructions)</div>" +
-                    "</div>" +
-                    // "<button style='display: block;background-color: #008CBA;' handle='modelInput'/>" +
-                "</div>";
+                "</ul>" ;
+                // "<div id='modelBox' class='box d-vertical d-center'>" +
+                //     "<div handle='message' class='dropzone-message'>" +
+                //         "<div handle='modelInput' class='dropzone-instructions'>nls(RISE_Server_Instructions)</div>" +
+                //     "</div>" +
+                //     // "<button style='display: block;background-color: #008CBA;' handle='modelInput'/>" +
+                // "</div>";
     }
 
 });

@@ -4,7 +4,6 @@ import Lang from '../utils/lang.js';
 import Array from '../utils/array.js';
 import Dom from '../utils/dom.js';
 import Widget from '../ui/widget.js';
-import ModelInput from './modelInput.js';
 
 export default Lang.Templatable("Widget.Dropzone", class Dropzone extends Widget { 
 
@@ -26,8 +25,7 @@ export default Lang.Templatable("Widget.Dropzone", class Dropzone extends Widget
 					  "<i handle='icon' class='fas fa-exclamation-triangle'></i>" +
 				  "</div>" +
 				  "<input handle='input' type='file' multiple />" +
-			   "</div>" ;
-			//    "<div handle='modelInput' class='info info-label' widget='Widget.ModelInput'></div>";
+			   "</div>";
 	}
 	
 	OnInput_Change(ev) {

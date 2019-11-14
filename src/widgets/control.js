@@ -14,6 +14,7 @@ import Palette from './palette.js';
 import Playback from './playback.js';
 import Simulation from '../simulation/simulation.js';
 
+
 const BG_NORMAL = "var(--color-5)";
 const BG_DISABLED = "var(--color-7)";
 
@@ -37,8 +38,8 @@ export default Lang.Templatable("Widget.Control", class Control extends Widget {
 		this.Node("load").addEventListener("click", this.onLoadClick_Handler.bind(this));
 		this.Node("palette").addEventListener("click", this.onPaletteClick_Handler.bind(this));
 		this.Node("dropzone").On("Change", this.onDropzoneChange_Handler.bind(this));
+		this.Node("riseModel").addEventListener("click", this.onModelInputClick_Handler.bind(this));
 
-		this.Node("modelList").On("dataReady", this.onModelListClick_Handler.bind(this));
 
 		// this.Node("modelList").On("dataReady", function(ev) {
 		// 	console.log(ev.data);
@@ -48,9 +49,18 @@ export default Lang.Templatable("Widget.Control", class Control extends Widget {
 		this.popup = new Popup();
 		
 		this.popup.Widget = new Palette();
+
+		this.popupRise = new Popup();
+		this.popupRise.Widget = new ModelList();
+		
+		this.popupRise.Widget.On("dataReady", this.onModelListClick_Handler.bind(this));
 		
 		this.popup.Node("title").innerHTML = Lang.Nls("Control_PaletteEditor");
 	}
+
+	onModelInputClick_Handler(){ 
+		this.popupRise.Show();
+    }
 	
 	LoadSimulation(data) {
 		this.simulation = new Simulation();
@@ -161,10 +171,6 @@ export default Lang.Templatable("Widget.Control", class Control extends Widget {
 	}
 
 	onModelListClick_Handler(ev){
-		
-		console.log(ev);
-		console.log(ev.result);
-
 		var fileList = ev.files;
 
 		// var modelArray = this.Array.from(ev.data);
@@ -176,8 +182,11 @@ export default Lang.Templatable("Widget.Control", class Control extends Widget {
 		var success = this.onParserDetected_Handler.bind(this);
 		var failure = this.onError_Handler.bind(this);
 		
+		this.popupRise.Hide();
+
 		Sim.DetectParser(ev.result).then(success, failure);
 		
+
 		// this.LoadSimulation(ev.results);
 
 		// this.Node("load").disabled = true;
@@ -200,9 +209,12 @@ export default Lang.Templatable("Widget.Control", class Control extends Widget {
 						  "<div handle='dropzone' class='dropzone' widget='Widget.Dropzone'></div>" +
 						  "<div handle='info' class='info' widget='Widget.Info'></div>" +
 						  "<div handle='settings' class='settings' widget='Widget.Settings'></div>" +
-						  "<img handle='palette' class='palette disabled' src='assets/swatch.png' title='nls(Control_PaletteEditor)' alt='nls(Control_PaletteEditor)'>" +
-						  "<div handle='modelList' class='info info-label' widget='Widget.ModelList'></div>" +
-					  "</div>" +
+						 '<div>' + 
+						    "<img handle='palette' class='palette disabled' src='assets/swatch.png' title='nls(Control_PaletteEditor)' alt='nls(Control_PaletteEditor)'>" +
+						    "<img handle='riseModel' class='rise' src='assets/cloud.png' title='nls(RISE_Server_Instructions)' alt='nls(RISE_Server_Instructions)'>" +
+						//   "<div handle='modelList' class='info info-label' widget='Widget.ModelList'></div>" +
+					     "</div>" +
+						"</div>" +
 					  
 					  "<div class='row row-2'>" +
 						  "<button handle='load' class='load' disabled>nls(Main_Load)</button>" +
