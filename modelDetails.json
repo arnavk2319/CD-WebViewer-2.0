@@ -1,5 +1,5 @@
 {
-	"modelData": [
+	"modelValue": [
 		[
 			"modelName": "Life",
 			"modelUrl": "http://vs1.sce.carleton.ca:8080/cdpp/sim/workspaces/test/dcdpp/LifeModel/results.zip",
