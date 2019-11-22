@@ -20,5 +20,6 @@
 			"modelUrl": "http://vs1.sce.carleton.ca:8080/cdpp/sim/workspaces/test/dcdpp/BattleModel/results.zip",
 			"modelHandle": "battleModel"
 		}
-	]
+	],
+	"modelCount": 4
 }
