@@ -476,15 +476,14 @@ img.palette {
 	margin-left : 10px;
 }
 
-/* TODO: Review CSS for rise list widget */
-.rise {
-	cursor: pointer;
-    height: 28px;
+img.rise {
+	cursor : pointer;
+	height : 28px;
+    width : 28px;
     font-size: 26px;
-    background: none;
-    box-shadow: none;
+    background: white;
     border-radius: 30px;
-    padding: 0px;
+    padding: 2px;
 }
 
 ul {
